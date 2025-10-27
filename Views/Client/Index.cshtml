@@ -1,0 +1,46 @@
+﻿@model IEnumerable<CRM_ManagementInterface.Models.Clients>
+
+@{
+    ViewData["Title"] = "Client Management";
+}
+
+<h1>Clients</h1>
+
+<table class="table table-bordered table-striped">
+    
+    <thead>
+        <td>
+        <tr>
+            
+            <th>Title</th>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Email</th>
+            <th>Contact Number</th>
+            <th>Address</th>
+            <th>Client Type</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var client in Model)
+        {<td/>
+            <tr>
+              
+                <td>@client.Title?.TitleName</td>
+                <td>@client.Name</td>
+                <td>@client.Surname</td>
+                <td>@client.Email</td>
+                <td>@client.ContactNumber</td>
+                <td>@client.Address</td>
+                <td>@client.ClientType?.ClientTypeName</td>
+                   <td>
+                        <a asp-action="Edit" asp-route-id="@client.ClientId">Edit</a>
+                        <a asp-action="Delete" asp-route-id="@client.ClientId">Delete</a>
+    </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a class="btn btn-success" href="/Client/Create">Add New Client</a>
